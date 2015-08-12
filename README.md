@@ -7,21 +7,42 @@ a standard environment we can all run in.
 
 This depends on your host OS. Check [Docker Installation](https://docs.docker.com/installation) and follow the directions.
 
-## Steps to build the container
+## Get the docker image
 
-### build the image
+As an experiment, I posted the image I built to [Docker
+Hub](https://hub.docker.com) Getting the docker container running
+means either downloading the pre-built image, or just building the
+image yourself. Both are pretty easy, so I don't know which is
+actually better.
+
+### Pull the docker image from docker hub
+
+I am not sure how this works because I have not had anyone else try to
+pull one of my images yet, but in theory, you just have to do this:
+
+    docker pull gardnerpomper/bob_tutorial
+
+If that does not work, then follow the instructions under building the image.
+
+### Build the image
 
 Build the image in the directory containing the Dockerfile
 
-    docker build -t bob .
+    docker build -t gardnerpomper/bob_tutorial .
 
-### start the container
+## Get logged into the docker container
+
+Once you have the image, you need to run it to create the
+"container". Then you can log into the container and have a terminal
+session that is pre-configured for the BoB tutorial.
+
+### Create the container (i.e. run the image)
 
 it is best to run as a daemon (-d) and connect to it later. Also, the -t is required
 to provide the tty which sudo requires.
 
     cd <directory above 100517_BoB_for_NGIC>
-    docker run -dt  --name bob -v $PWD:/vol bob
+    docker run -dt  --name bob -v $PWD:/vol gardnerpomper/bob_tutorial
 
 to confirm it is running:
 
